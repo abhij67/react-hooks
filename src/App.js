@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import React, { useState } from "react";
 
 function App() {
+  console.log(useState());
+  const [name, setName] = useState("Abhilash");
+  const [flag, setFlag] = useState(false);
+  const [steps, setSteps] = useState(0);
+
+  function changeName() {
+    return setFlag(!flag);
+    // return setName("Abhilash Jay");
+  }
+
+  function increment() {
+    setSteps((prevState) => prevState + 1);
+    setSteps((prevState) => prevState + 1);
+    console.log("Steps Now is: " + steps);
+  }
+
+  function decrement() {
+    setSteps(steps - 1);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>Hello, {flag ? name : ""}</div>
+      <button onClick={changeName}>Change Name</button>
+      <hr></hr>
+      <button onClick={increment}>+</button>
+      <h1>{steps}</h1>
+      <button onClick={decrement}>-</button>
     </div>
   );
 }
